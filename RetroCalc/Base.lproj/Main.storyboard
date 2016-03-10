@@ -62,7 +62,10 @@
                                                     <constraint firstAttribute="height" constant="57" id="iCF-Kh-1io"/>
                                                     <constraint firstAttribute="width" constant="57" id="iEF-Sk-CaQ"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="7"/>
+                                                <state key="normal" backgroundImage="signUnsign"/>
+                                                <connections>
+                                                    <action selector="onSignedUnsignedPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J0l-My-SxH"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAP-p2-w2T">
                                                 <rect key="frame" x="72" y="0.0" width="129" height="57"/>
@@ -71,6 +74,9 @@
                                                     <constraint firstAttribute="width" constant="129" id="uKT-Ax-dOv"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="clear"/>
+                                                <connections>
+                                                    <action selector="onClearPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LNb-UE-psn"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -274,7 +280,7 @@
                                     </mask>
                                 </variation>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtS-sl-RuK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtS-sl-RuK">
                                 <rect key="frame" x="172" y="36" width="200" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Gw6-pR-2ro"/>
@@ -336,6 +342,7 @@
         <image name="equal" width="111" height="114"/>
         <image name="ground" width="888" height="72"/>
         <image name="multiply" width="111" height="114"/>
+        <image name="signUnsign" width="111" height="114"/>
         <image name="space-bg" width="988" height="946"/>
         <image name="subtract" width="111" height="114"/>
     </resources>

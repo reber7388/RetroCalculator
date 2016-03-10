@@ -24,10 +24,11 @@ class ViewController: UIViewController {
     var btnSound: AVAudioPlayer!
     
     var runningNumber = ""
-    var leftValStr = ""
+    var leftValStr = "\(0.0)"
     var rightValStr = ""
     var currentOperation: Operation = Operation.Empty
     var result = ""
+    
     
 
     override func viewDidLoad() {
@@ -50,8 +51,9 @@ class ViewController: UIViewController {
     @IBAction func numberPressed(btn: UIButton!) {
         playSound()
         
+    
         runningNumber += "\(btn.tag)" //adding the numbers pressed to the current running number
-        outputLbl.text = runningNumber //printing to the label
+        outputLbl.text = "\(Double(runningNumber)!)" //printing to the label
     }
     
     
@@ -79,6 +81,32 @@ class ViewController: UIViewController {
         processOperation(currentOperation)
     }
     
+    @IBAction func onClearPressed(sender: AnyObject) {
+        playSound()
+        leftValStr = "\(0.0)"
+        rightValStr = ""
+        runningNumber = ""
+        currentOperation = Operation.Empty
+        result = ""
+        outputLbl.text = leftValStr
+    }
+    
+    @IBAction func onSignedUnsignedPressed(sender: AnyObject) {
+        playSound()
+        
+        if runningNumber != "" {
+            runningNumber = "\(Double(-1) * Double(runningNumber)!)"
+            outputLbl.text = runningNumber
+//        } else if leftValStr == "" {
+//            leftValStr = "\(0.0)"
+//            outputLbl.text = "\(Double(-1) * Double(leftValStr)!)"
+        } else if leftValStr != "" {
+            leftValStr = "\(Double(-1) * Double(leftValStr)!)"
+            outputLbl.text = leftValStr
+        }
+        
+    }
+    
     func processOperation(op: Operation) {
         playSound()
         
@@ -87,6 +115,9 @@ class ViewController: UIViewController {
             
             //check to see if user selected an operator then selected another operator without entering a number first
             if runningNumber != "" {
+                if leftValStr == "" { //If the user presses an operation before entering a number first
+                    leftValStr = "\(0.0)"
+                }
                 rightValStr = runningNumber
                 runningNumber = ""
                 
@@ -100,12 +131,12 @@ class ViewController: UIViewController {
                     result = "\(Double(leftValStr)! + Double(rightValStr)!)"
                 }
                 
+                
                 leftValStr = result
                 outputLbl.text = result
-                
-                
             }
-            
+
+        
             currentOperation = op //store the next operator
             
         } else {
@@ -122,6 +153,15 @@ class ViewController: UIViewController {
         }
         
         btnSound.play()
+    }
+    
+    func resetCalc() {
+        runningNumber = ""
+        leftValStr = ""
+        rightValStr = ""
+        currentOperation = Operation.Empty
+        result = ""
+        outputLbl.text = "\(0.0)"
     }
     
     
